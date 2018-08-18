@@ -1,0 +1,18 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["node_modules", "dist", "website"]
+  },
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "import-name": [false],
+    "member-access": [false],
+    "max-line-length": [false],
+    "no-console": [false],
+    "no-var-requires": [false],
+    "ordered-imports": [false],
+    "trailing-comma": [false],
+    "variable-name": [true, "allow-pascal-case"],
+    "no-string-literal": [false]
+  }
+}
