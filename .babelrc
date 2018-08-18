@@ -5,7 +5,11 @@
       {
         "modules": false,
         "loose": true,
-        "browsers": ["ie >= 11"]
+        "browsers": [
+          "> 1%",
+          "last 2 versions",
+          "Firefox ESR"
+        ]
       }
     ],
     "react"

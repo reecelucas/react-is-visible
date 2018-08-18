@@ -1,7 +1,7 @@
 {
   "name": "react-is-visible",
   "version": "0.1.0",
-  "description": "Detect when a component enters the viewport",
+  "description": "Detect when a component enters the viewport, using the IntersectionObserver API",
   "homepage": "https://github.com/reecelucas/react-is-visible#readme",
   "author": "Reece Lucas <reecelucas@sky.com> (https://github.com/reecelucas/)",
   "license": "MIT",

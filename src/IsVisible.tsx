@@ -116,9 +116,13 @@ export default class IsVisible extends React.PureComponent<
       threshold: this.props.threshold!
     });
 
-    if (this.elementRef.current) {
-      this.observer.observe(this.elementRef.current);
+    if (!this.elementRef.current) {
+      throw new Error(
+        'elementRef must be bound to a DOM element. See: #section-of-readme'
+      );
     }
+
+    this.observer.observe(this.elementRef.current);
   }
 
   /**
