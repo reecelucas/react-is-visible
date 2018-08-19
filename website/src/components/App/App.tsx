@@ -13,19 +13,52 @@ export default class extends React.Component<{}, {}> {
 
         <IsVisible>
           {({ isVisible, elementRef }) => (
-            <Box isVisible={isVisible} reference={elementRef} />
+            <Box isVisible={isVisible} reference={elementRef}>
+              <div>
+                IsVisible: {isVisible ? 'true' : 'false'}
+                <br />
+                once: false
+                <br />
+                theshold: 0<br />
+                root: null
+                <br />
+                rootMargin: '0px 0px 0px 0px'
+              </div>
+            </Box>
           )}
         </IsVisible>
 
         <IsVisible once={true}>
           {({ isVisible, elementRef }) => (
-            <Box isVisible={isVisible} reference={elementRef} />
+            <Box isVisible={isVisible} reference={elementRef}>
+              <div>
+                IsVisible: {isVisible ? 'true' : 'false'}
+                <br />
+                once: true
+                <br />
+                theshold: 0<br />
+                root: null
+                <br />
+                rootMargin: '0px 0px 0px 0px'
+              </div>
+            </Box>
           )}
         </IsVisible>
 
         <IsVisible isVisible={true}>
           {({ isVisible, elementRef }) => (
-            <Box isVisible={isVisible} reference={elementRef} />
+            <Box isVisible={isVisible} reference={elementRef}>
+              <div>
+                IsVisible: {isVisible ? 'true' : 'false'}
+                <br />
+                once: false
+                <br />
+                theshold: 0<br />
+                root: null
+                <br />
+                rootMargin: '0px 0px 0px 0px'
+              </div>
+            </Box>
           )}
         </IsVisible>
 
@@ -33,19 +66,59 @@ export default class extends React.Component<{}, {}> {
 
         <IsVisible threshold={0.5}>
           {({ isVisible, elementRef }) => (
-            <Box isVisible={isVisible} reference={elementRef} />
+            <Box isVisible={isVisible} reference={elementRef}>
+              <div>
+                IsVisible: {isVisible ? 'true' : 'false'}
+                <br />
+                once: false
+                <br />
+                theshold: 0.5
+                <br />
+                root: null
+                <br />
+                rootMargin: '0px 0px 0px 0px'
+              </div>
+            </Box>
           )}
         </IsVisible>
 
-        <IsVisible root="test-root">
-          {({ isVisible, elementRef }) => (
-            <Box isVisible={isVisible} reference={elementRef} />
-          )}
-        </IsVisible>
+        <div id="test-root" className="scrollable-div">
+          <div style={{ height: '1000px' }} />
+
+          <IsVisible root="test-root">
+            {({ isVisible, elementRef }) => (
+              <Box isVisible={isVisible} reference={elementRef}>
+                <div>
+                  IsVisible: {isVisible ? 'true' : 'false'}
+                  <br />
+                  once: false
+                  <br />
+                  theshold: 0<br />
+                  root: 'test-root'
+                  <br />
+                  rootMargin: '0px 0px 0px 0px'
+                </div>
+              </Box>
+            )}
+          </IsVisible>
+
+          <div style={{ height: '1000px' }} />
+        </div>
 
         <IsVisible rootMargin="300px">
           {({ isVisible, elementRef }) => (
-            <Box isVisible={isVisible} reference={elementRef} />
+            <Box isVisible={isVisible} reference={elementRef}>
+              <div>
+                IsVisible: {isVisible ? 'true' : 'false'}
+                <br />
+                once: false
+                <br />
+                theshold: 0<br />
+                root: null
+                <br />
+                rootMargin: '300px'
+              </div>
+            </Box>
           )}
         </IsVisible>
 

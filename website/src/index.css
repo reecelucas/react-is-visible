@@ -15,14 +15,25 @@ body {
 
 /* Box demo styles */
 .box {
+  align-items: center;
   background-color: #e0bbe4;
-  height: 200px;
+  display: flex;
+  justify-content: center;
+  height: 400px;
   margin-bottom: 100px;
-  width: 200px;
+  width: 400px;
 }
 
 .box--is-visible {
   background-color: #957dad;
+}
+
+.scrollable-div {
+  background-color: #ccc;
+  height: 500px;
+  margin-bottom: 100px;
+  overflow-y: scroll;
+  width: 100%;
 }
 
 /* Lazy-load demo styles */

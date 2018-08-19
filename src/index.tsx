@@ -45,8 +45,8 @@ export default class IsVisible extends React.PureComponent<
     threshold: 0
   };
 
-  observer: IntersectionObserver | null;
-  elementRef: ElementRef;
+  private observer: IntersectionObserver | null;
+  private elementRef: ElementRef;
 
   constructor(props: IsVisibleProps) {
     super(props);
@@ -60,7 +60,7 @@ export default class IsVisible extends React.PureComponent<
     this.onEntry = this.onEntry.bind(this);
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     if (!('IntersectionObserver' in window)) {
       this.setState({ isVisible: true });
       return;
@@ -71,18 +71,38 @@ export default class IsVisible extends React.PureComponent<
     }
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     this.destroyObserver();
   }
 
-  destroyObserver() {
+  /**
+   * Since we need greater flexibility (and support) than the Ref forwarding
+   * API affords us, we're relying on the following approach to pass refs to
+   * child component DOM nodes: https://bit.ly/2OVOJPM.
+   */
+  public render() {
+    return this.props.children({
+      elementRef: this.elementRef,
+      isVisible: this.state.isVisible
+    });
+  }
+
+  private destroyObserver() {
     if (this.observer) {
       this.observer.disconnect();
       this.observer = null;
     }
   }
 
-  onEntry(entries: IntersectionObserverEntry[]) {
+  private setObserverRoot(): HTMLElement | null {
+    if (typeof this.props.root === 'string') {
+      return document.querySelector(this.props.root);
+    }
+
+    return null;
+  }
+
+  private onEntry(entries: IntersectionObserverEntry[]) {
     entries.forEach(entry => {
       if (
         entry.isIntersecting &&
@@ -101,15 +121,7 @@ export default class IsVisible extends React.PureComponent<
     });
   }
 
-  setObserverRoot(): HTMLElement | null {
-    if (typeof this.props.root === 'string') {
-      return document.querySelector(this.props.root);
-    }
-
-    return null;
-  }
-
-  observe() {
+  private observe() {
     this.observer = new IntersectionObserver(this.onEntry, {
       root: this.setObserverRoot(),
       rootMargin: this.props.rootMargin!,
@@ -123,17 +135,5 @@ export default class IsVisible extends React.PureComponent<
     }
 
     this.observer.observe(this.elementRef.current);
-  }
-
-  /**
-   * Since we need greater flexibility (and support) than the Ref forwarding
-   * API affords us, we're relying on the following approach to pass refs to
-   * child component DOM nodes: https://bit.ly/2OVOJPM.
-   */
-  render() {
-    return this.props.children({
-      elementRef: this.elementRef,
-      isVisible: this.state.isVisible
-    });
   }
 }

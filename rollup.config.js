@@ -21,7 +21,7 @@ const hyphenToCamelCase = string =>
  * 5. `rollup-plugin-babel` looks for a `.babelrc` file at the root.
  */
 const config = {
-  input: 'src/index.ts',
+  input: 'src/index.tsx',
   plugins: [
     external() /* [1] */,
     resolve() /* [2] */,

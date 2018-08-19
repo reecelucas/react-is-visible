@@ -1,6 +1,6 @@
 import * as React from 'react';
 import 'intersection-observer';
-import IsVisible from '../IsVisible';
+import IsVisible from '../index';
 import { render, cleanup } from 'react-testing-library';
 
 describe('IsVisible', () => {
