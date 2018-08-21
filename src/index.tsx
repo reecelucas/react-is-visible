@@ -26,7 +26,7 @@ export default class IsVisible extends React.PureComponent<
   IsVisibleState
 > {
   static propTypes = {
-    children: PropTypes.func,
+    children: PropTypes.func.isRequired,
     isVisible: PropTypes.bool,
     once: PropTypes.bool,
     root: PropTypes.string,
@@ -81,12 +81,6 @@ export default class IsVisible extends React.PureComponent<
    * child component DOM nodes: https://bit.ly/2OVOJPM.
    */
   public render() {
-    if (typeof this.props.children !== 'function') {
-      throw new Error(
-        'Expected children to be a function. See: #section-of-readme'
-      );
-    }
-
     return this.props.children({
       elementRef: this.elementRef,
       isVisible: this.state.isVisible

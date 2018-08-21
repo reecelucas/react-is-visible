@@ -26,10 +26,6 @@ describe('IsVisible', () => {
       );
     });
 
-    test('should throw if not passed a function as children', () => {
-      expect(() => render(<IsVisible>test</IsVisible>)).toThrow();
-    });
-
     test('should throw if elementRef is not bound to a child DOM node', () => {
       const children = jest.fn(() => <div />);
       expect(() => render(<IsVisible>{children}</IsVisible>)).toThrow();
